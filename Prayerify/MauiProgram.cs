@@ -27,7 +27,7 @@ namespace Prayerify
             // Register services, viewmodels, and pages
             var dbPath = Path.Combine(FileSystem.AppDataDirectory, "prayerify.db3");
             builder.Services.AddSingleton<IPrayerDatabase>(_ => new PrayerDatabase(dbPath));
-            builder.Services.AddSingleton<IDialogService, DialogService>();
+            builder.Services.AddSingleton<IGenericService, GenericService>();
 
             builder.Services.AddTransient<PrayersViewModel>();
             builder.Services.AddTransient<PrayersPage>();

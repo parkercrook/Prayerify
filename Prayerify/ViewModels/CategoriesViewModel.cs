@@ -10,14 +10,14 @@ namespace Prayerify.ViewModels
 	public partial class CategoriesViewModel : BaseViewModel
 	{
 		private readonly IPrayerDatabase _database;
-		private readonly IDialogService _dialogService;
+		private readonly IGenericService _dialogService;
 
 		public ObservableCollection<Category> Categories { get; } = new();
 
 		[ObservableProperty]
 		private string _newCategoryName = string.Empty;
 
-		public CategoriesViewModel(IPrayerDatabase database, IDialogService dialogService)
+		public CategoriesViewModel(IPrayerDatabase database, IGenericService dialogService)
 		{
 			_database = database;
 			_dialogService = dialogService;

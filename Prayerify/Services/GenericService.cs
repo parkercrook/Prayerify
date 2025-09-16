@@ -1,11 +1,11 @@
 ﻿namespace Prayerify.Services
 {
-    public interface IDialogService
+    public interface IGenericService
     {
         Task ShowAlertAsync(string title, string message, string cancel = "OK");
     }
     
-    public class DialogService : IDialogService
+    public class GenericService : IGenericService
     {
         public async Task ShowAlertAsync(string title, string message, string cancel = "OK")
         {

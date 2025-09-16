@@ -10,7 +10,7 @@ namespace Prayerify.ViewModels
 	public partial class EditPrayerViewModel : BaseViewModel
 	{
 		private readonly IPrayerDatabase _database;
-		private readonly IDialogService _dialogService;
+		private readonly IGenericService _dialogService;
 
 		public ObservableCollection<Category> Categories { get; } = new();
 
@@ -30,7 +30,7 @@ namespace Prayerify.ViewModels
 		[ObservableProperty]
 		private Category? _selectedCategory;
 
-		public EditPrayerViewModel(IPrayerDatabase database, IDialogService dialogService)
+		public EditPrayerViewModel(IPrayerDatabase database, IGenericService dialogService)
 		{
 			_database = database;
 			_dialogService = dialogService;
