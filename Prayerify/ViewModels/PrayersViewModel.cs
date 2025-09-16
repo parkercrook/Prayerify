@@ -106,7 +106,7 @@ namespace Prayerify.ViewModels
 		{
 			if (categoryId == null) return "No Category";
 			var category = Categories.FirstOrDefault(c => c.Id == categoryId);
-			return category?.Name ?? "Unknown Category";
+			return category?.Name ?? "No Category";
 		}
 
 		[RelayCommand]
