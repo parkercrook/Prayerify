@@ -5,7 +5,7 @@
 			 Title="Prayers">
 	<ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddPrayerCommand}"/>
-        <ToolbarItem Text="Search" Command="{Binding ToggleSearchVisibilityCommand}" />
+        <ToolbarItem Text="Search" Command="{Binding ToggleSearchVisibilityCommand}"/>
     </ContentPage.ToolbarItems>
 	<Grid RowDefinitions="Auto,*">
 		<!-- Search and Filter Section -->
@@ -16,21 +16,21 @@
 					 Spacing="8">
 			
 			<!-- Search Bar -->
-			<Grid ColumnDefinitions="*,Auto"
+			<Grid ColumnDefinitions="*,Auto">
 				<SearchBar Grid.Column="0"
 						   Text="{Binding SearchText}"
 						   Placeholder="Search prayers..."
 						   BackgroundColor="White"
 						   CancelButtonColor="Gray"
                            MaxLength="30" />
-                <Button Grid.Column="1"
+				<Button Grid.Column="1"
 						Text="Clear"
 						Command="{Binding ClearSearchCommand}"
 						BackgroundColor="Transparent"
 						TextColor="Gray"
 						FontSize="12"
 						Padding="12,0"/>
-            </Grid>
+			</Grid>
 			
 			<!-- Category Filter -->
 			<Grid ColumnDefinitions="Auto,*,Auto">
