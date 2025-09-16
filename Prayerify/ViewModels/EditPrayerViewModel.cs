@@ -2,6 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Prayerify.Data;
 using Prayerify.Models;
+using Prayerify.Services;
 using System.Collections.ObjectModel;
 
 namespace Prayerify.ViewModels
@@ -9,6 +10,7 @@ namespace Prayerify.ViewModels
 	public partial class EditPrayerViewModel : BaseViewModel
 	{
 		private readonly IPrayerDatabase _database;
+		private readonly IDialogService _dialogService;
 
 		public ObservableCollection<Category> Categories { get; } = new();
 
@@ -28,9 +30,10 @@ namespace Prayerify.ViewModels
 		[ObservableProperty]
 		private Category? _selectedCategory;
 
-		public EditPrayerViewModel(IPrayerDatabase database)
+		public EditPrayerViewModel(IPrayerDatabase database, IDialogService dialogService)
 		{
 			_database = database;
+			_dialogService = dialogService;
 			Title = "Edit Prayer";
 		}
 
@@ -60,7 +63,19 @@ namespace Prayerify.ViewModels
 		[RelayCommand]
 		public async Task SaveAsync()
 		{
-			var model = new Prayer
+			if(Subject == string.Empty)
+			{
+				await _dialogService.ShowAlertAsync("Empty Subject", "The subject of the prayer cannot be left empty.");
+				return;
+			}
+
+            if (Body == string.Empty)
+            {
+                await _dialogService.ShowAlertAsync("Empty Body", "The body of the prayer cannot be left empty.");
+				return;
+            }
+
+            var model = new Prayer
 			{
 				Id = Id,
 				Subject = Subject,

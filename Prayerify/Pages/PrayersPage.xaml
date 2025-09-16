@@ -4,8 +4,8 @@
 			 x:Class="Prayerify.Pages.PrayersPage"
 			 Title="Prayers">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Text="Add" Command="{Binding AddPrayerCommand}"/>
-	</ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddPrayerCommand}"/>
+    </ContentPage.ToolbarItems>
 	<CollectionView ItemsSource="{Binding Prayers}"
 					EmptyView="No prayers yet. Tap Add to create one."
 					Margin="16">
@@ -25,10 +25,10 @@
 						</SwipeItems>
 					</SwipeView.RightItems>
 					<Frame Padding="12" Margin="0,8" CornerRadius="12" HasShadow="False">
-						<Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto">
-							<Label Text="{Binding Subject}" FontAttributes="Bold" FontSize="20"/>
-                            <Label Text="{Binding Body}" Grid.Row="1" Opacity="0.8" Margin="0,8,0,0"/>
-                            <Label Text="{Binding CreatedUtc}" Grid.Row="2" Opacity="0.8" Margin="0,8,0,0" TextColor="Grey"/>
+                        <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto">
+                            <Label Text="{Binding Subject}" FontAttributes="Bold" FontSize="25"/>
+							<Label Text="{Binding Body}" Grid.Row="1" Opacity="0.8" Margin="0,8,0,0" FontSize="20"/>
+                            <Label Text="{Binding CreatedUtc}" Grid.Row="2" Opacity="0.8" Margin="0,8,0,0" TextColor="Grey" HorizontalTextAlignment="End"/>
                         </Grid>
 					</Frame>
 				</SwipeView>

@@ -4,7 +4,7 @@
 			 x:Class="Prayerify.Pages.SessionSetupPage"
 			 Title="Session">
 	<VerticalStackLayout Padding="16" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
-		<Label Text="How many prayers?" FontSize="24" HorizontalOptions="Center" />
+		<Label Text="How many prayers?" FontSize="40" HorizontalOptions="Center" />
 		<Stepper Minimum="1" Maximum="20" Increment="1" Value="{Binding Count}" HorizontalOptions="Center" />
 		<Label Text="{Binding Count}" FontSize="48" HorizontalOptions="Center" FontAttributes="Bold"/>
 		<Button Text="Start" Command="{Binding StartCommand}" HorizontalOptions="Center" FontSize="30"/>

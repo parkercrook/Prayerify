@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Prayerify.Data;
 using Prayerify.ViewModels;
 using Prayerify.Pages;
+using CommunityToolkit.Mvvm.Messaging;
+using Prayerify.Services;
 
 namespace Prayerify
 {
@@ -25,6 +27,7 @@ namespace Prayerify
             // Register services, viewmodels, and pages
             var dbPath = Path.Combine(FileSystem.AppDataDirectory, "prayerify.db3");
             builder.Services.AddSingleton<IPrayerDatabase>(_ => new PrayerDatabase(dbPath));
+            builder.Services.AddSingleton<IDialogService, DialogService>();
 
             builder.Services.AddTransient<PrayersViewModel>();
             builder.Services.AddTransient<PrayersPage>();

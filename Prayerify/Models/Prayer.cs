@@ -22,7 +22,7 @@ namespace Prayerify.Models
 
 		public bool IsDeleted { get; set; }
 
-		public string CreatedUtc { get; set; } = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(DateTime.UtcNow.Humanize());
+		public string CreatedUtc { get; set; } = DateTime.Now.ToString("MMMM dd, yyyy");
 	}
 }
 

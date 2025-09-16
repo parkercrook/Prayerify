@@ -7,11 +7,12 @@
 			<CollectionView.ItemTemplate>
 				<DataTemplate>
 					<Frame Padding="12" Margin="0,8" CornerRadius="12" HasShadow="False">
-						<VerticalStackLayout Spacing="8">
-							<Label Text="{Binding Subject}" FontAttributes="Bold" FontSize="20"/>
-							<Label Text="{Binding Body}" Opacity="0.8"/>
-						</VerticalStackLayout>
-					</Frame>
+                    <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto">
+                        <Label Text="{Binding Subject}" FontAttributes="Bold" FontSize="25"/>
+                        <Label Text="{Binding Body}" Grid.Row="1" Opacity="0.8" Margin="0,8,0,0" FontSize="20"/>
+                        <Label Text="{Binding CreatedUtc}" Grid.Row="2" Opacity="0.8" Margin="0,8,0,0" TextColor="Grey" HorizontalTextAlignment="End"/>
+                    </Grid>
+                </Frame>
 				</DataTemplate>
 			</CollectionView.ItemTemplate>
 	</CollectionView>

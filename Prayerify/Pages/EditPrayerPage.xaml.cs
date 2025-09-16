@@ -20,6 +20,7 @@ namespace Prayerify.Pages
 			base.OnAppearing();
 			await _viewModel.LoadAsync(PrayerId);
 		}
+
 	}
 }
 
