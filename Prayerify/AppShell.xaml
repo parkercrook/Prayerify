@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Prayerify.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Prayerify"
+    xmlns:pages="clr-namespace:Prayerify.Pages"
+    Shell.FlyoutBehavior="Disabled"
+    Title="Prayerify">
+
+    <TabBar>
+        <ShellContent
+            Title="Prayers"
+            Icon="cross.svg"
+            ContentTemplate="{DataTemplate pages:PrayersPage}"
+            Route="PrayersPage" />
+        <ShellContent
+            Title="Categories"
+            Icon="cross.svg"
+            ContentTemplate="{DataTemplate pages:CategoriesPage}"
+            Route="CategoriesPage" />
+        <ShellContent
+            Title="Session"
+            Icon="cross.svg"
+            ContentTemplate="{DataTemplate pages:SessionSetupPage}"
+            Route="SessionSetupPage" />
+        <ShellContent
+            Title="Answered"
+            Icon="cross.svg"
+            ContentTemplate="{DataTemplate pages:AnsweredPrayersPage}"
+            Route="AnsweredPrayersPage" />
+    </TabBar>
+
+</Shell>

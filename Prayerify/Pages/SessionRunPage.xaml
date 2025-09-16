@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="Prayerify.Pages.SessionRunPage"
+			 Title="Session">
+	<ScrollView>
+		<VerticalStackLayout Padding="16" Spacing="16">
+			<Frame Padding="16" CornerRadius="16" HasShadow="False">
+				<VerticalStackLayout Spacing="12">
+					<Label Text="{Binding Current.Subject}" FontAttributes="Bold" FontSize="22"/>
+					<Label Text="{Binding Current.Body}"/>
+				</VerticalStackLayout>
+			</Frame>
+			<HorizontalStackLayout Spacing="12">
+				<Button Text="Done" Command="{Binding MarkDoneCommand}" />
+				<Button Text="Answered" Command="{Binding MarkAnsweredCommand}" />
+			</HorizontalStackLayout>
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>
+
+

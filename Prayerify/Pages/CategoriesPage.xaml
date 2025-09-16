@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="Prayerify.Pages.CategoriesPage"
+			 Title="Categories">
+	<VerticalStackLayout Padding="16" Spacing="16">
+		<Frame Padding="12" CornerRadius="12" HasShadow="False">
+            <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                <Entry Placeholder="New category name" Text="{Binding NewCategoryName}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" MinimumWidthRequest="250" MaxLength="30"/>
+				<Button Text="Add" Command="{Binding AddCategoryCommand}" HorizontalOptions="End" VerticalOptions="Center" Padding="16,8" WidthRequest="70"/>
+			</HorizontalStackLayout>
+		</Frame>
+		<CollectionView ItemsSource="{Binding Categories}" EmptyView="No categories yet.">
+			<CollectionView.ItemTemplate>
+				<DataTemplate>
+					<SwipeView>
+						<SwipeView.RightItems>
+							<SwipeItems>
+                                <SwipeItem Text="Delete" BackgroundColor="#6D2E46"
+										  Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteCategoryCommand}"
+										  CommandParameter="{Binding .}" />
+							</SwipeItems>
+						</SwipeView.RightItems>
+						<Frame Padding="12" Margin="0,8" CornerRadius="12" HasShadow="False" HeightRequest="50">
+							<Label Text="{Binding Name}" />
+						</Frame>
+					</SwipeView>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
+	</VerticalStackLayout>
+</ContentPage>
+
+
