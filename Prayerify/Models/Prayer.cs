@@ -23,6 +23,10 @@ namespace Prayerify.Models
 		public bool IsDeleted { get; set; }
 
 		public string CreatedUtc { get; set; } = DateTime.Now.ToString("MMMM dd, yyyy");
+
+		// Non-database property for display purposes
+		[Ignore]
+		public string CategoryName { get; set; } = string.Empty;
 	}
 }
 

@@ -5,10 +5,62 @@
 			 Title="Prayers">
 	<ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddPrayerCommand}"/>
+        <ToolbarItem Text="Search" Command="{Binding ToggleSearchVisibilityCommand}" />
     </ContentPage.ToolbarItems>
-	<CollectionView ItemsSource="{Binding Prayers}"
-					EmptyView="No prayers yet. Tap Add to create one."
-					Margin="16">
+	<Grid RowDefinitions="Auto,*">
+		<!-- Search and Filter Section -->
+		<StackLayout Grid.Row="0" 
+					 IsVisible="{Binding IsSearchVisible}"
+					 BackgroundColor="LightGray"
+					 Padding="16,8"
+					 Spacing="8">
+			
+			<!-- Search Bar -->
+			<Grid ColumnDefinitions="*,Auto"
+				<SearchBar Grid.Column="0"
+						   Text="{Binding SearchText}"
+						   Placeholder="Search prayers..."
+						   BackgroundColor="White"
+						   CancelButtonColor="Gray"
+                           MaxLength="30" />
+                <Button Grid.Column="1"
+						Text="Clear"
+						Command="{Binding ClearSearchCommand}"
+						BackgroundColor="Transparent"
+						TextColor="Gray"
+						FontSize="12"
+						Padding="12,0"/>
+            </Grid>
+			
+			<!-- Category Filter -->
+			<Grid ColumnDefinitions="Auto,*,Auto">
+				<Label Grid.Column="0"
+					   Text="Category:"
+					   VerticalOptions="Center"
+					   FontSize="14"
+					   TextColor="Black"
+                       Margin="0,0,8,0"/>
+				<Picker Grid.Column="1"
+						ItemsSource="{Binding Categories}"
+						SelectedItem="{Binding SelectedCategory}"
+						ItemDisplayBinding="{Binding Name}"
+						Title="All Categories"
+						BackgroundColor="White"/>
+				<Button Grid.Column="2"
+						Text="Clear"
+						Command="{Binding ClearFiltersCommand}"
+						BackgroundColor="Transparent"
+						TextColor="Gray"
+						FontSize="12"
+						Padding="12,0"/>
+			</Grid>
+		</StackLayout>
+		
+		<!-- Prayers Collection -->
+		<CollectionView Grid.Row="1"
+						ItemsSource="{Binding Prayers}"
+						EmptyView="No prayers found. Try adjusting your search or filters."
+						Margin="16">
 		<CollectionView.ItemTemplate>
 			<DataTemplate>
 				<SwipeView>
@@ -25,16 +77,18 @@
 						</SwipeItems>
 					</SwipeView.RightItems>
 					<Frame Padding="12" Margin="0,8" CornerRadius="12" HasShadow="False">
-                        <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto">
+                        <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto,Auto">
                             <Label Text="{Binding Subject}" FontAttributes="Bold" FontSize="25"/>
 							<Label Text="{Binding Body}" Grid.Row="1" Opacity="0.8" Margin="0,8,0,0" FontSize="20"/>
-                            <Label Text="{Binding CreatedUtc}" Grid.Row="2" Opacity="0.8" Margin="0,8,0,0" TextColor="Grey" HorizontalTextAlignment="End"/>
+                            <Label Text="{Binding CategoryName}" Grid.Row="2" Opacity="0.6" Margin="0,8,0,0" TextColor="{StaticResource PrimaryDark}" FontSize="14"/>
+                            <Label Text="{Binding CreatedUtc}" Grid.Row="2" Opacity="0.8" Margin="0,8,0,0" TextColor="Grey" HorizontalTextAlignment="End" FontSize="14"/>
                         </Grid>
 					</Frame>
 				</SwipeView>
 			</DataTemplate>
 		</CollectionView.ItemTemplate>
-	</CollectionView>
+		</CollectionView>
+	</Grid>
 </ContentPage>
 
 

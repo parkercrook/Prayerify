@@ -13,3 +13,4 @@ namespace Prayerify.Core.Models
 		public DateTime CreatedUtc { get; set; } = DateTime.UtcNow;
 	}
 }
+

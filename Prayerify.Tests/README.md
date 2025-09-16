@@ -65,3 +65,4 @@ The tests aim to achieve high code coverage across:
 - Business logic validation
 - Data persistence operations
 - User interface interactions (via ViewModels)
+

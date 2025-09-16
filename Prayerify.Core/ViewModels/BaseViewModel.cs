@@ -11,3 +11,4 @@ namespace Prayerify.Core.ViewModels
 		private string _title = string.Empty;
 	}
 }
+
