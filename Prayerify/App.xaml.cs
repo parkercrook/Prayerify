@@ -6,6 +6,8 @@
         {
             InitializeComponent();
 
+            UserAppTheme = Preferences.Get("theme", "light") == "light" ? AppTheme.Light : AppTheme.Dark;
+
             MainPage = new AppShell();
         }
     }

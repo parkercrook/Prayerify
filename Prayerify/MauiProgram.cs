@@ -41,6 +41,8 @@ namespace Prayerify
             builder.Services.AddTransient<SessionRunPage>();
             builder.Services.AddTransient<AnsweredPrayersViewModel>();
             builder.Services.AddTransient<AnsweredPrayersPage>();
+            builder.Services.AddTransient<SettingsViewModel>();
+            builder.Services.AddTransient<SettingsPage>();
 
             var app = builder.Build();
 

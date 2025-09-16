@@ -13,6 +13,7 @@ namespace Prayerify
 			Routing.RegisterRoute(nameof(SessionSetupPage), typeof(SessionSetupPage));
 			Routing.RegisterRoute(nameof(SessionRunPage), typeof(SessionRunPage));
 			Routing.RegisterRoute(nameof(AnsweredPrayersPage), typeof(AnsweredPrayersPage));
+			Routing.RegisterRoute(nameof(SettingsPage), typeof(SettingsPage));
 		}
 	}
 }

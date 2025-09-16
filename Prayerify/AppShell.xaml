@@ -29,6 +29,11 @@
             Icon="cross.svg"
             ContentTemplate="{DataTemplate pages:AnsweredPrayersPage}"
             Route="AnsweredPrayersPage" />
+        <ShellContent
+            Title="Settings"
+            Icon="cross.svg"
+            ContentTemplate="{DataTemplate pages:SettingsPage}"
+            Route="SettingsPage" />  
     </TabBar>
 
 </Shell>

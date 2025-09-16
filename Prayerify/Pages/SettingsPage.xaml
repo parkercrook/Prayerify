@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Prayerify.Pages.SettingsPage"
+             Title="Settings">
+    <VerticalStackLayout Padding="16" Spacing="16">
+        <Frame Padding="12" CornerRadius="12" HasShadow="False">
+            <HorizontalStackLayout Spacing="180" VerticalOptions="Center">
+                <Label Text="Dark Mode" VerticalOptions="Center" FontSize="20"/>
+                <Switch IsToggled="{Binding DarkModeEnabled}" OnColor="{StaticResource Gray600}" ThumbColor="{StaticResource Primary}" />
+            </HorizontalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>
