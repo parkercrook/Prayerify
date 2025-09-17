@@ -13,10 +13,10 @@ namespace Prayerify.Models
 		public int? CategoryId { get; set; }
 
 		[NotNull]
-		public string Subject { get; set; } = string.Empty;
+		public string PrayerTitle { get; set; } = string.Empty;
 
 		[NotNull]
-		public string Body { get; set; } = string.Empty;
+		public string PrayerDescription { get; set; } = string.Empty;
 
 		public bool IsAnswered { get; set; }
 

@@ -18,11 +18,10 @@ namespace Prayerify.ViewModels
 		private int _id;
 
 		[ObservableProperty]
-		private string _subject = string.Empty;
+		private string _prayerTitle = string.Empty;
 
 		[ObservableProperty]
-		private string _body = string.Empty;
-
+		private string _prayerDescription = string.Empty;
 
 		[ObservableProperty]
 		private int? _categoryId;
@@ -53,8 +52,8 @@ namespace Prayerify.ViewModels
 			if (prayer != null)
 			{
 				Id = prayer.Id;
-				Subject = prayer.Subject;
-				Body = prayer.Body;
+				PrayerTitle = prayer.PrayerTitle;
+				PrayerDescription = prayer.PrayerDescription;
 				CategoryId = prayer.CategoryId;
 				SelectedCategory = Categories.FirstOrDefault(c => c.Id == CategoryId);
 			}
@@ -63,23 +62,17 @@ namespace Prayerify.ViewModels
 		[RelayCommand]
 		public async Task SaveAsync()
 		{
-			if(Subject == string.Empty)
+			if(PrayerTitle == string.Empty)
 			{
 				await _dialogService.ShowAlertAsync("Empty Subject", "The subject of the prayer cannot be left empty.");
 				return;
 			}
 
-            if (Body == string.Empty)
-            {
-                await _dialogService.ShowAlertAsync("Empty Body", "The body of the prayer cannot be left empty.");
-				return;
-            }
-
             var model = new Prayer
 			{
 				Id = Id,
-				Subject = Subject,
-				Body = Body,
+				PrayerTitle = PrayerTitle,
+				PrayerDescription = PrayerDescription,
 				CategoryId = SelectedCategory?.Id,
 			};
 			await _database.UpsertPrayerAsync(model);

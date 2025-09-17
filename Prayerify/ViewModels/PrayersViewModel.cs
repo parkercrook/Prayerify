@@ -89,8 +89,8 @@ namespace Prayerify.ViewModels
 			{
 				var searchLower = SearchText.ToLowerInvariant();
 				filteredPrayers = filteredPrayers.Where(p => 
-					p.Subject.ToLowerInvariant().Contains(searchLower) ||
-					p.Body.ToLowerInvariant().Contains(searchLower) ||
+					p.PrayerTitle.ToLowerInvariant().Contains(searchLower) ||
+					p.PrayerDescription.ToLowerInvariant().Contains(searchLower) ||
 					GetCategoryName(p.CategoryId).ToLowerInvariant().Contains(searchLower));
 			}
 			
