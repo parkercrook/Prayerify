@@ -11,7 +11,7 @@
 		<!-- Search and Filter Section -->
 		<StackLayout Grid.Row="0" 
 					 IsVisible="{Binding IsSearchVisible}"
-					 BackgroundColor="LightGray"
+					 BackgroundColor="{AppThemeBinding Light=#CEBEBE, Dark=Transparent}"
 					 Padding="16,8"
 					 Spacing="8">
 			
@@ -27,8 +27,8 @@
 						Text="Clear"
 						Command="{Binding ClearSearchCommand}"
 						BackgroundColor="Transparent"
-						TextColor="Gray"
-						FontSize="12"
+						TextColor="{AppThemeBinding Light=Black, Dark=White}"
+						FontSize="15"
 						Padding="12,0"/>
 			</Grid>
 			
@@ -50,8 +50,8 @@
 						Text="Clear"
 						Command="{Binding ClearFiltersCommand}"
 						BackgroundColor="Transparent"
-						TextColor="Gray"
-						FontSize="12"
+						TextColor="{AppThemeBinding Light=Black, Dark=White}"
+						FontSize="15"
 						Padding="12,0"/>
 			</Grid>
 		</StackLayout>
@@ -67,7 +67,7 @@
 					<SwipeView.RightItems>
 						<SwipeItems Mode="Reveal">
 							<SwipeItem Text="Answered"
-									  BackgroundColor="LightGreen"
+									  BackgroundColor="DarkGreen"
 									  Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ToggleAnsweredCommand}"
 									  CommandParameter="{Binding .}" />
 							<SwipeItem Text="Delete"
