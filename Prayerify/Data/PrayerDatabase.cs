@@ -18,6 +18,7 @@ namespace Prayerify.Data
 		Task<int> DeleteCategoryAsync(int id);
 		Task<List<Category>> GetCategoriesAsync();
 		Task<Category> GetCategoryAsync(int id);
+		Task<int> UpdatePrayerCountAsync();
 
     }
 
@@ -108,6 +109,12 @@ namespace Prayerify.Data
             var result = await _connection.Table<Category>().Where(c => c.Id == id).FirstOrDefaultAsync();
             return result;
         }
+
+		public async Task<int> UpdatePrayerCountAsync()
+		{
+			var activePrayers = await GetPrayersAsync(includeAnswered: false, includeDeleted: false);
+			return activePrayers.Count;
+		}
 	}
 }
 

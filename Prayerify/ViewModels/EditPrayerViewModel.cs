@@ -76,6 +76,7 @@ namespace Prayerify.ViewModels
 				CategoryId = SelectedCategory?.Id,
 			};
 			await _database.UpsertPrayerAsync(model);
+			await _database.UpdatePrayerCountAsync();
 			await Shell.Current.GoToAsync("..");
 		}
 	}
