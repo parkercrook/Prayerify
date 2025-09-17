@@ -14,7 +14,10 @@ namespace Prayerify.ViewModels
 		private string _ids = string.Empty;
 
 		[ObservableProperty]
-		private Prayer? _current;
+		private Prayer? _currentPrayer;
+
+		[ObservableProperty]
+		private Category? _currentCategory;
 
 		private Queue<int> _queue = new();
 
@@ -43,7 +46,8 @@ namespace Prayerify.ViewModels
 				return;
 			}
 			var id = _queue.Dequeue();
-			Current = await _database.GetPrayerAsync(id);
+			CurrentPrayer = await _database.GetPrayerAsync(id);
+			CurrentCategory = await _database.GetCategoryAsync(id);
 		}
 
 		[RelayCommand]
@@ -55,9 +59,9 @@ namespace Prayerify.ViewModels
 		[RelayCommand]
 		public async Task MarkAnsweredAsync()
 		{
-			if (Current != null)
+			if (CurrentPrayer != null)
 			{
-				await _database.MarkPrayerAnsweredAsync(Current.Id, true);
+				await _database.MarkPrayerAnsweredAsync(CurrentPrayer.Id, true);
 			}
 			await LoadNextAsync();
 		}

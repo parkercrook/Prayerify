@@ -36,23 +36,28 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
-		<AndroidSigningKeyStore>prayerify-1.0.keystore</AndroidSigningKeyStore>
+		<AndroidSigningKeyStore></AndroidSigningKeyStore>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
-	  <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
-	  <AndroidKeyStore>True</AndroidKeyStore>
-	  <AndroidSigningStorePass>CH18n3t!2022</AndroidSigningStorePass>
-	  <AndroidSigningKeyAlias>crook</AndroidSigningKeyAlias>
-	  <AndroidSigningKeyPass>CH18n3t!2022</AndroidSigningKeyPass>
+	  <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass></AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias></AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass></AndroidSigningKeyPass>
+	  <AndroidUseAapt2>True</AndroidUseAapt2>
+	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+	  <AndroidPackageFormat>aab</AndroidPackageFormat>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
-	  <AndroidKeyStore>True</AndroidKeyStore>
-	  <AndroidSigningStorePass>CH18n3t!2022</AndroidSigningStorePass>
-	  <AndroidSigningKeyAlias>crook</AndroidSigningKeyAlias>
-	  <AndroidSigningKeyPass>CH18n3t!2022</AndroidSigningKeyPass>
-	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass></AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias></AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass></AndroidSigningKeyPass>
+	  <AndroidPackageFormat>aab</AndroidPackageFormat>
+	  <AndroidUseAapt2>True</AndroidUseAapt2>
+	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
 	</PropertyGroup>
 
 	<ItemGroup>

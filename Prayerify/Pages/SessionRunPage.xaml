@@ -3,20 +3,21 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 x:Class="Prayerify.Pages.SessionRunPage"
 			 Title="Session">
-	<ScrollView>
-		<VerticalStackLayout Padding="16" Spacing="16">
-			<Frame Padding="16" CornerRadius="16" HasShadow="False">
-				<VerticalStackLayout Spacing="12">
-					<Label Text="{Binding Current.Subject}" FontAttributes="Bold" FontSize="22"/>
-					<Label Text="{Binding Current.Body}"/>
-				</VerticalStackLayout>
-			</Frame>
-			<HorizontalStackLayout Spacing="12">
-				<Button Text="Done" Command="{Binding MarkDoneCommand}" />
-				<Button Text="Answered" Command="{Binding MarkAnsweredCommand}" />
-			</HorizontalStackLayout>
-		</VerticalStackLayout>
-	</ScrollView>
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto" Padding="16" RowSpacing="16">
+            <Frame Padding="16" CornerRadius="16" HasShadow="False" Grid.Row="0">
+                <Grid RowSpacing="12" RowDefinitions="Auto,Auto,Auto">
+                    <Label Text="{Binding CurrentPrayer.Subject}" FontAttributes="Bold" FontSize="22" Grid.Row="0"/>
+                    <Label Text="{Binding CurrentPrayer.Body}" Grid.Row="1"/>
+                    <Label Text="{Binding CurrentCategory.Name}" Grid.Row="2" VerticalOptions="End" TextColor="{StaticResource Gray500}"/>
+                </Grid>
+            </Frame>
+            <HorizontalStackLayout Spacing="12" Grid.Row="1" HorizontalOptions="End">
+                <Button Text="Done" Command="{Binding MarkDoneCommand}" />
+                <Button Text="Answered" Command="{Binding MarkAnsweredCommand}" />
+            </HorizontalStackLayout>
+        </Grid>
+    </ScrollView>
 </ContentPage>
 
 

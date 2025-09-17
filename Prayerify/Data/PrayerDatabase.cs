@@ -17,7 +17,9 @@ namespace Prayerify.Data
 		Task<int> UpsertCategoryAsync(Category category);
 		Task<int> DeleteCategoryAsync(int id);
 		Task<List<Category>> GetCategoriesAsync();
-	}
+		Task<Category> GetCategoryAsync(int id);
+
+    }
 
 	public class PrayerDatabase : IPrayerDatabase
 	{
@@ -100,6 +102,12 @@ namespace Prayerify.Data
 		{
 			return _connection.Table<Category>().OrderByDescending(c => c.CreatedUtc).ToListAsync();
 		}
+
+		public async Task<Category> GetCategoryAsync(int id)
+		{
+            var result = await _connection.Table<Category>().Where(c => c.Id == id).FirstOrDefaultAsync();
+            return result;
+        }
 	}
 }
 

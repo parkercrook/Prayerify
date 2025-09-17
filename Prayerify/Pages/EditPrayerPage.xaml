@@ -7,8 +7,8 @@
 		<VerticalStackLayout Padding="16" Spacing="16">
 			<Frame Padding="12" CornerRadius="12" HasShadow="False">
 				<VerticalStackLayout Spacing="12">
-					<Entry Placeholder="Subject" Text="{Binding Subject}" />
-					<Editor Placeholder="Body" AutoSize="TextChanges" Text="{Binding Body}" />
+					<Entry Placeholder="Subject" Text="{Binding Subject}" MaxLength="30"/>
+					<Editor Placeholder="Body" AutoSize="TextChanges" Text="{Binding Body}" MaxLength="500"/>
 					<Picker Title="Category" ItemsSource="{Binding Categories}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedCategory}"/>
 				</VerticalStackLayout>
 			</Frame>
