@@ -40,24 +40,19 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
-	  <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+	  <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
 	  <AndroidKeyStore>False</AndroidKeyStore>
-	  <AndroidSigningStorePass></AndroidSigningStorePass>
-	  <AndroidSigningKeyAlias></AndroidSigningKeyAlias>
-	  <AndroidSigningKeyPass></AndroidSigningKeyPass>
-	  <AndroidUseAapt2>True</AndroidUseAapt2>
-	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-	  <AndroidPackageFormat>aab</AndroidPackageFormat>
+	  <AndroidSigningStorePass>CH18n3t!2022</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>crook</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>CH18n3t!2022</AndroidSigningKeyPass>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
 	  <AndroidKeyStore>False</AndroidKeyStore>
-	  <AndroidSigningStorePass></AndroidSigningStorePass>
-	  <AndroidSigningKeyAlias></AndroidSigningKeyAlias>
-	  <AndroidSigningKeyPass></AndroidSigningKeyPass>
-	  <AndroidPackageFormat>aab</AndroidPackageFormat>
-	  <AndroidUseAapt2>True</AndroidUseAapt2>
-	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+	  <AndroidSigningStorePass>CH18n3t!2022</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>crook</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>CH18n3t!2022</AndroidSigningKeyPass>
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
 	</PropertyGroup>
 
 	<ItemGroup>
