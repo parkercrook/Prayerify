@@ -36,19 +36,21 @@ namespace Prayerify.ViewModels
 			Title = "Edit Prayer";
 		}
 
-		public async Task LoadAsync(int? id)
+		public async Task LoadAsync(string? idParam)
 		{
+			int.TryParse(idParam, out int id);
+
 			// Load categories first
 			Categories.Clear();
 			var categories = await _database.GetCategoriesAsync();
 			foreach (var c in categories) Categories.Add(c);
 
-			if (id == null || id == 0)
+			if (id == 0)
 			{
 				Title = "Add Prayer";
 				return;
 			}
-			var prayer = await _database.GetPrayerAsync(id.Value);
+			var prayer = await _database.GetPrayerAsync(id);
 			if (prayer != null)
 			{
 				Id = prayer.Id;

@@ -71,10 +71,14 @@
 									  Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ToggleAnsweredCommand}"
 									  CommandParameter="{Binding .}" />
 							<SwipeItem Text="Delete"
-									  BackgroundColor="#6D2E46"
+									  BackgroundColor="DarkRed"
 									  Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeletePrayerCommand}"
 									  CommandParameter="{Binding .}" />
-						</SwipeItems>
+                            <SwipeItem Text="Edit"
+								  BackgroundColor="#6D2E46"
+								  Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditPrayerCommand}"
+								  CommandParameter="{Binding .}" />
+                            </SwipeItems>
 					</SwipeView.RightItems>
 					<Frame Padding="12" Margin="0,8" CornerRadius="12" HasShadow="False">
                         <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto,Auto">

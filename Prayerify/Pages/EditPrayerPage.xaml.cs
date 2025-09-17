@@ -2,12 +2,11 @@ using Prayerify.ViewModels;
 
 namespace Prayerify.Pages
 {
-	[QueryProperty(nameof(PrayerId), nameof(PrayerId))]
-	public partial class EditPrayerPage : ContentPage
+	public partial class EditPrayerPage : ContentPage, IQueryAttributable
 	{
 		private readonly EditPrayerViewModel _viewModel;
 
-		public int? PrayerId { get; set; }
+		public string? PrayerId { get; set; }
 
 		public EditPrayerPage(EditPrayerViewModel viewModel)
 		{
@@ -21,7 +20,14 @@ namespace Prayerify.Pages
 			await _viewModel.LoadAsync(PrayerId);
 		}
 
-	}
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+			if (query.ContainsKey("Id"))
+			{
+                PrayerId = query["Id"].ToString();
+            } 
+        }
+    }
 }
 
 

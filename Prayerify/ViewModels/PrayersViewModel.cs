@@ -126,8 +126,15 @@ namespace Prayerify.ViewModels
 		[RelayCommand]
 		public async Task EditPrayerAsync(Prayer prayer)
 		{
-			if (prayer == null) return;
-			await Shell.Current.GoToAsync($"{nameof(EditPrayerPage)}?PrayerId={prayer.Id}");
+			try
+			{
+                if (prayer == null) return;
+                await Shell.Current.GoToAsync($"{nameof(EditPrayerPage)}?Id={prayer.Id}");
+            }
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
 		}
 
 		[RelayCommand]
