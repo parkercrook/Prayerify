@@ -10,7 +10,7 @@ namespace Prayerify.ViewModels
 		private readonly IPrayerDatabase _database;
 
 		[ObservableProperty]
-		private int _count = 1;
+		private int _count = 0;
 
 		public SessionSetupViewModel(IPrayerDatabase database)
 		{
