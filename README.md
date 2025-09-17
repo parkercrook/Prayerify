@@ -131,29 +131,6 @@ Prayerify/
 2. Celebrate God's faithfulness and answered prayers
 3. Review past prayers for encouragement
 
-## 🧪 Testing
-
-The project includes comprehensive unit tests using xUnit, Moq, and FluentAssertions.
-
-### Running Tests
-```bash
-# Run all tests
-dotnet test
-
-# Run with coverage
-dotnet test --collect:"XPlat Code Coverage"
-
-# Run specific test categories
-dotnet test --filter "CategoryTests"
-```
-
-### Test Coverage
-- **Models**: Property validation and default values
-- **Database**: CRUD operations and data integrity
-- **ViewModels**: Business logic and state management
-- **Services**: Cross-platform service implementations
-- **Integration**: End-to-end workflow testing
-
 ## 🔧 Configuration
 
 ### Database
@@ -192,11 +169,6 @@ We welcome contributions! Please follow these steps:
 3. Commit your changes (`git commit -m 'Add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
-### Development Guidelines
-- Follow C# coding conventions
-- Write unit tests for new features
-- Ensure cross-platform compatibility
 
 ## 📄 License
 
