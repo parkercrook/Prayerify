@@ -41,14 +41,14 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
 	  <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
-	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidKeyStore>False</AndroidKeyStore>
 	  <AndroidSigningStorePass>CH18n3t!2022</AndroidSigningStorePass>
 	  <AndroidSigningKeyAlias>crook</AndroidSigningKeyAlias>
 	  <AndroidSigningKeyPass>CH18n3t!2022</AndroidSigningKeyPass>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
-	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidKeyStore>False</AndroidKeyStore>
 	  <AndroidSigningStorePass>CH18n3t!2022</AndroidSigningStorePass>
 	  <AndroidSigningKeyAlias>crook</AndroidSigningKeyAlias>
 	  <AndroidSigningKeyPass>CH18n3t!2022</AndroidSigningKeyPass>
