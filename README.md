@@ -196,26 +196,18 @@ We welcome contributions! Please follow these steps:
 ### Development Guidelines
 - Follow C# coding conventions
 - Write unit tests for new features
-- Update documentation as needed
 - Ensure cross-platform compatibility
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Built with love for the Christian community
-- Inspired by the importance of prayer in daily life
-- Thanks to the .NET MAUI team for the excellent cross-platform framework
+This project is licensed under the MIT License - see the [LICENSE](Prayerify/LICENSE.txt) file for details.
 
 ## 📞 Support
 
 If you encounter any issues or have questions:
 
-1. Check the [Issues](https://github.com/yourusername/prayerify/issues) page
+1. Check the [Issues](https://github.com/parkercrook/prayerify/issues) page
 2. Create a new issue with detailed information
-3. Join our community discussions
 
 ---
 
