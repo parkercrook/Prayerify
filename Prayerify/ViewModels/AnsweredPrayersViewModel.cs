@@ -30,14 +30,9 @@ namespace Prayerify.ViewModels
 				var items = await _database.GetAnsweredPrayersAsync();
 				foreach (var p in items)
 				{
-					if (p.CategoryId == null)
-					{
-						p.CategoryName = "No Category";
-					}
-					else
-					{
-                        p.CategoryName = await GetCategoryName((int)p.CategoryId);
-                    }
+					var category = await _database.GetCategoryAsync(p.CategoryId);
+					p.CategoryId = category.Id;
+					p.CategoryName = category.Name;
                     Prayers.Add(p);
 				}
 			}
