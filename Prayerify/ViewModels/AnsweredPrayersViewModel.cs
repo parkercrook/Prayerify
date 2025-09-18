@@ -61,6 +61,19 @@ namespace Prayerify.ViewModels
 		}
 
         [RelayCommand]
+        public async Task ToggleUnansweredAsync(Prayer prayer)
+        {
+            if (prayer == null) return;
+            var newValue = !prayer.IsAnswered;
+            await _database.TogglePrayerAnsweredAsync(prayer.Id, newValue);
+            prayer.IsAnswered = newValue;
+            if (!newValue)
+            {
+                Prayers.Remove(prayer);
+            }
+        }
+
+        [RelayCommand]
         public async Task DeletePrayerAsync(Prayer prayer)
         {
             if (prayer == null) return;

@@ -142,7 +142,7 @@ namespace Prayerify.ViewModels
 		{
 			if (prayer == null) return;
 			var newValue = !prayer.IsAnswered;
-			await _database.MarkPrayerAnsweredAsync(prayer.Id, newValue);
+			await _database.TogglePrayerAnsweredAsync(prayer.Id, newValue);
 			prayer.IsAnswered = newValue;
 			if (newValue)
 			{
@@ -151,7 +151,7 @@ namespace Prayerify.ViewModels
 			}
 		}
 
-		[RelayCommand]
+        [RelayCommand]
 		public void ToggleSearchVisibility()
 		{
 			IsSearchVisible = !IsSearchVisible;

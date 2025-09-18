@@ -9,6 +9,10 @@
                 <SwipeView>
                     <SwipeView.RightItems>
                         <SwipeItems Mode="Reveal">
+                            <SwipeItem Text="Unanswered"
+				                  BackgroundColor="{StaticResource Primary}"
+				                  Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ToggleUnansweredCommand}"
+				                  CommandParameter="{Binding .}" />
                             <SwipeItem Text="Delete"
 								  BackgroundColor="DarkRed"
 								  Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeletePrayerCommand}"

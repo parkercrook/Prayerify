@@ -66,7 +66,7 @@ namespace Prayerify.ViewModels
 		{
 			if (CurrentPrayer != null)
 			{
-				await _database.MarkPrayerAnsweredAsync(CurrentPrayer.Id, true);
+				await _database.TogglePrayerAnsweredAsync(CurrentPrayer.Id, true);
 			}
 			await LoadNextPrayerAsync();
 		}
