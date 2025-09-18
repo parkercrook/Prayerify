@@ -31,6 +31,7 @@ namespace Prayerify.ViewModels
 			{
 				IsBusy = true;
 				Prayers.Clear();
+				Categories.Clear();
 
 				var items = await _database.GetAnsweredPrayersAsync();
 				var categories = await _database.GetCategoriesAsync();
