@@ -10,7 +10,7 @@ I would love contributions! Please follow these steps:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a PR
 
-# Add Existing Feature Ideas/Fix Bugs
+# Build Existing Feature Ideas/Fix Bugs
 
 1. Check the issues page
 2. Leave a comment to be assigned to an issue/feature
