@@ -59,6 +59,14 @@ namespace Prayerify.ViewModels
 				IsBusy = false;
 			}
 		}
+
+        [RelayCommand]
+        public async Task DeletePrayerAsync(Prayer prayer)
+        {
+            if (prayer == null) return;
+            await _database.DeletePrayerAsync(prayer.Id);
+            Prayers.Remove(prayer);
+        }
         private string GetCategoryName(int? categoryId)
         {
             if (categoryId == null) return "No Category";
