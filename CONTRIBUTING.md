@@ -19,3 +19,8 @@ I would love contributions! Please follow these steps:
 5. Commit your changes
 6. Push to the branch
 7. Open a PR
+
+### Find a new issue?
+
+1. Create an issue in the issues page
+2. Add relevant labels (bug, enhancement, etc.)
