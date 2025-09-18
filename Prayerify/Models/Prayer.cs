@@ -26,7 +26,7 @@ namespace Prayerify.Models
 
 		// Non-database property for display purposes
 		[Ignore]
-		public string CategoryName { get; set; } = string.Empty;
+		public string CategoryName { get; set; } = "No Category";
 	}
 }
 

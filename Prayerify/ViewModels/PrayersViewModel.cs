@@ -47,7 +47,7 @@ namespace Prayerify.ViewModels
 		}
 
 		[RelayCommand]
-		public async Task LoadAsync()
+		public async Task LoadAllPrayersAsync()
 		{
 			if (IsBusy) return;
 			try

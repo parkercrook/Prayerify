@@ -34,11 +34,11 @@ namespace Prayerify.ViewModels
 				.Select(s => int.TryParse(s, out var n) ? n : 0)
 				.Where(n => n > 0);
 			_queue = new Queue<int>(arr);
-			MainThread.BeginInvokeOnMainThread(async () => await LoadNextAsync());
+			MainThread.BeginInvokeOnMainThread(async () => await LoadNextPrayerAsync());
 		}
 
 		[RelayCommand]
-		public async Task LoadNextAsync()
+		public async Task LoadNextPrayerAsync()
 		{
 			if (_queue.Count == 0)
 			{
@@ -47,13 +47,18 @@ namespace Prayerify.ViewModels
 			}
 			var id = _queue.Dequeue();
 			CurrentPrayer = await _database.GetPrayerAsync(id);
-			CurrentCategory = await _database.GetCategoryAsync(id);
+			if (CurrentPrayer?.CategoryId == null)
+			{
+				return;
+			}
+
+			CurrentCategory = await _database.GetCategoryAsync((int)CurrentPrayer.CategoryId);
 		}
 
 		[RelayCommand]
 		public async Task MarkDoneAsync()
 		{
-			await LoadNextAsync();
+			await LoadNextPrayerAsync();
 		}
 
 		[RelayCommand]
@@ -63,7 +68,7 @@ namespace Prayerify.ViewModels
 			{
 				await _database.MarkPrayerAnsweredAsync(CurrentPrayer.Id, true);
 			}
-			await LoadNextAsync();
+			await LoadNextPrayerAsync();
 		}
 	}
 }

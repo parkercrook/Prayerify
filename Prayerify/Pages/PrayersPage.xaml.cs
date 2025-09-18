@@ -15,7 +15,7 @@ namespace Prayerify.Pages
 		protected override async void OnAppearing()
 		{
 			base.OnAppearing();
-			await _viewModel.LoadAsync();
+			await _viewModel.LoadAllPrayersAsync();
 		}
 	}
 }
