@@ -12,9 +12,8 @@ namespace Prayerify.Data
 		Task<List<Prayer>> GetPrayersAsync(bool includeAnswered = true, bool includeDeleted = false);
 		Task<List<Prayer>> GetAnsweredPrayersAsync();
 		Task<List<Prayer>> GetPrayersByCategoryAsync(int? categoryId, bool includeAnswered = true);
-		Task<int> MarkPrayerAnsweredAsync(int id, bool isAnswered);
-
-		Task<int> UpsertCategoryAsync(Category category);
+		Task<int> TogglePrayerAnsweredAsync(int id, bool isAnswered);
+        Task<int> UpsertCategoryAsync(Category category);
 		Task<int> DeleteCategoryAsync(int id);
 		Task<List<Category>> GetCategoriesAsync();
 		Task<Category> GetCategoryAsync(int id);
@@ -80,7 +79,7 @@ namespace Prayerify.Data
 			return _connection.QueryAsync<Prayer>("SELECT * FROM Prayer WHERE IsAnswered = 1 AND IsDeleted = 0 ORDER BY CreatedUtc DESC");
 		}
 
-		public Task<int> MarkPrayerAnsweredAsync(int id, bool isAnswered)
+		public Task<int> TogglePrayerAnsweredAsync(int id, bool isAnswered)
 		{
 			return _connection.ExecuteAsync("UPDATE Prayer SET IsAnswered = ? WHERE Id = ?", isAnswered ? 1 : 0, id);
 		}
