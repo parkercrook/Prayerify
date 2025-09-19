@@ -1,6 +1,6 @@
-# 🙏 Prayerify
+# Prayerify
 
-A beautiful and intuitive prayer management app built with .NET MAUI, designed to help you organize, track, and engage with your prayers in a meaningful way.
+An intuitive prayer management app built with .NET MAUI, designed to help you organize, track, and engage with your prayers in a meaningful way.
 
 ## ✨ Features
 
