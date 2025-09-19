@@ -1,12 +1,14 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using Prayerify.Data;
+using Prayerify.Messages;
 using Prayerify.Pages;
 using System.ComponentModel;
 
 namespace Prayerify.ViewModels
 {
-	public partial class SessionSetupViewModel : BaseViewModel
+	public partial class SessionSetupViewModel : BaseViewModel, IRecipient<PrayerCountChangedMessage>, IDisposable
 	{
 		private readonly IPrayerDatabase _database;
 
@@ -24,6 +26,9 @@ namespace Prayerify.ViewModels
 			_database = database;
 			Title = "Prayer Session";
 			PropertyChanged += OnPropertyChanged;
+			
+			// Register for prayer count change messages
+			WeakReferenceMessenger.Default.Register(this);
 		}
 
 		[RelayCommand]
@@ -71,6 +76,27 @@ namespace Prayerify.ViewModels
 					CanStartSession = false;
 				}
 			}
+		}
+		
+		/// <summary>
+		/// Receives notification when prayer count changes
+		/// </summary>
+		public void Receive(PrayerCountChangedMessage message)
+		{
+			// Update the total prayer count
+			TotalPrayerCount = message.NewCount;
+			
+			// Ensure Count doesn't exceed the maximum
+			if (Count > TotalPrayerCount)
+			{
+				Count = TotalPrayerCount;
+			}
+		}
+		
+		// Clean up when this object is disposed
+		public void Dispose()
+		{
+			WeakReferenceMessenger.Default.Unregister<PrayerCountChangedMessage>(this);
 		}
     }
 }
