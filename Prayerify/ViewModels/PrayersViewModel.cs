@@ -1,6 +1,8 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using Prayerify.Data;
+using Prayerify.Messages;
 using Prayerify.Models;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -121,6 +123,11 @@ namespace Prayerify.ViewModels
 			if (prayer == null) return;
 			await _database.DeletePrayerAsync(prayer.Id);
 			Prayers.Remove(prayer);
+			_allPrayers.Remove(prayer);
+			
+			// Notify that prayer count has changed
+			var newCount = _allPrayers.Count;
+			WeakReferenceMessenger.Default.Send(new PrayerCountChangedMessage(newCount));
 		}
 
 		[RelayCommand]
@@ -148,6 +155,10 @@ namespace Prayerify.ViewModels
 			{
 				Prayers.Remove(prayer);
 				_allPrayers.Remove(prayer);
+				
+				// Notify that prayer count has changed
+				var newCount = _allPrayers.Count;
+				WeakReferenceMessenger.Default.Send(new PrayerCountChangedMessage(newCount));
 			}
 		}
 

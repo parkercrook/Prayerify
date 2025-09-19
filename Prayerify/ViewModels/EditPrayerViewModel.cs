@@ -1,6 +1,8 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using Prayerify.Data;
+using Prayerify.Messages;
 using Prayerify.Models;
 using Prayerify.Services;
 using System.Collections.ObjectModel;
@@ -78,7 +80,14 @@ namespace Prayerify.ViewModels
 				CategoryId = SelectedCategory?.Id,
 			};
 			await _database.UpsertPrayerAsync(model);
-			await _database.UpdatePrayerCountAsync();
+			var newCount = await _database.UpdatePrayerCountAsync();
+			
+			// Notify that prayer count has changed (only if adding a new prayer)
+			if (Id == 0)
+			{
+				WeakReferenceMessenger.Default.Send(new PrayerCountChangedMessage(newCount));
+			}
+			
 			await Shell.Current.GoToAsync("..");
 		}
 	}
