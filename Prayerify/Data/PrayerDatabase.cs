@@ -32,7 +32,7 @@ namespace Prayerify.Data
 
 		public async Task InitializeAsync()
 		{
-			await _connection.CreateTableAsync<Prayer>();
+            await _connection.CreateTableAsync<Prayer>();
 			await _connection.CreateTableAsync<Category>();
 		}
 
