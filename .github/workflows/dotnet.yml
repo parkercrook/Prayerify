@@ -32,10 +32,10 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore Prayerify.sln
     
-    - name: Build Core library
+    - name: Build Core Project
       run: dotnet build Prayerify.Core/Prayerify.Core.csproj --no-restore --configuration Release
     
-    - name: Build Tests
+    - name: Build Test Project
       run: dotnet build Prayerify.Tests/Prayerify.Tests.csproj --no-restore --configuration Release
     
     - name: Run Tests
