@@ -1,10 +1,8 @@
 using SQLite;
-using Humanizer;
-using System.Globalization;
 
 namespace Prayerify.Models
 {
-	public class Prayer
+    public class Prayer
 	{
 		[PrimaryKey, AutoIncrement]
 		public int Id { get; set; }
@@ -26,7 +24,7 @@ namespace Prayerify.Models
 
 		// Non-database property for display purposes
 		[Ignore]
-		public string CategoryName { get; set; } = string.Empty;
+		public string CategoryName { get; set; } = "No Category";
 	}
 }
 

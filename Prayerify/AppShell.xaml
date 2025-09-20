@@ -11,27 +11,27 @@
     <TabBar>
         <ShellContent
             Title="Prayers"
-            Icon="cross.svg"
+            Icon="{AppThemeBinding Light=folded_hands_light_mode.svg, Dark=folded_hands_dark_mode.svg}"
             ContentTemplate="{DataTemplate pages:PrayersPage}"
             Route="PrayersPage" />
         <ShellContent
             Title="Categories"
-            Icon="cross.svg"
+            Icon="{AppThemeBinding Light=book_light_mode.svg, Dark=book_dark_mode.svg}"
             ContentTemplate="{DataTemplate pages:CategoriesPage}"
             Route="CategoriesPage" />
         <ShellContent
             Title="Session"
-            Icon="cross.svg"
+            Icon="{AppThemeBinding Light=timer_light_mode.svg, Dark=timer_dark_mode.svg}"
             ContentTemplate="{DataTemplate pages:SessionSetupPage}"
             Route="SessionSetupPage" />
         <ShellContent
             Title="Answered"
-            Icon="cross.svg"
+            Icon="{AppThemeBinding Light=check_light_mode.svg, Dark=check_dark_mode.svg}"
             ContentTemplate="{DataTemplate pages:AnsweredPrayersPage}"
             Route="AnsweredPrayersPage" />
         <ShellContent
             Title="Settings"
-            Icon="cross.svg"
+            Icon="{AppThemeBinding Light=settings_light_mode.svg, Dark=settings_dark_mode.svg}"
             ContentTemplate="{DataTemplate pages:SettingsPage}"
             Route="SettingsPage" />  
     </TabBar>

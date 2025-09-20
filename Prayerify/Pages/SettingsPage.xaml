@@ -5,9 +5,9 @@
              Title="Settings">
     <VerticalStackLayout Padding="16" Spacing="16">
         <Frame Padding="12" CornerRadius="12" HasShadow="False">
-            <HorizontalStackLayout Spacing="180" VerticalOptions="Center">
+            <HorizontalStackLayout Spacing="130" VerticalOptions="Center">
                 <Label Text="Dark Mode" VerticalOptions="Center" FontSize="20"/>
-                <Switch IsToggled="{Binding DarkModeEnabled}" />
+                <Switch IsToggled="{Binding DarkModeEnabled}" HorizontalOptions="End"/>
             </HorizontalStackLayout>
         </Frame>
     </VerticalStackLayout>

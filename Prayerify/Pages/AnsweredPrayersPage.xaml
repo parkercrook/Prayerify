@@ -3,6 +3,7 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 x:Class="Prayerify.Pages.AnsweredPrayersPage"
 			 Title="Answered">
+
     <CollectionView ItemsSource="{Binding Prayers}" Margin="16">
         <CollectionView.EmptyView>
             <VerticalStackLayout Padding="20"

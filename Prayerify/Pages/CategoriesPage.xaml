@@ -6,7 +6,7 @@
 	<VerticalStackLayout Padding="16" Spacing="16">
 		<Frame Padding="12" CornerRadius="12" HasShadow="False">
             <HorizontalStackLayout Spacing="25" VerticalOptions="Center">
-                <Entry Placeholder="New category name" Text="{Binding NewCategoryName}" VerticalOptions="Center" MinimumWidthRequest="250" MaxLength="30" FontSize="18"/>
+                <Entry Placeholder="New category name" Text="{Binding NewCategoryName}" VerticalOptions="Center" MaxLength="30" FontSize="18"/>
                 <Button Text="Add" Command="{Binding AddCategoryCommand}" HorizontalOptions="End" VerticalOptions="Center" Padding="16,8" WidthRequest="70"/>
             </HorizontalStackLayout>
         </Frame>

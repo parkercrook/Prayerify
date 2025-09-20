@@ -1,6 +1,6 @@
-# 🙏 Prayerify
+# Prayerify
 
-A beautiful and intuitive prayer management app built with .NET MAUI, designed to help you organize, track, and engage with your prayers in a meaningful way.
+An intuitive prayer management app built with .NET MAUI, designed to help you organize, track, and engage with your prayers in a meaningful way.
 
 ## ✨ Features
 
@@ -25,7 +25,6 @@ A beautiful and intuitive prayer management app built with .NET MAUI, designed t
 ### 🎨 User Experience
 - **Cross-Platform**: Runs on Android, iOS, Windows, and macOS
 - **Modern UI**: Clean, intuitive interface with tab-based navigation
-- **Responsive Design**: Optimized for different screen sizes and orientations
 - **Offline First**: All data stored locally with SQLite database
 
 ## 🏗️ Architecture
@@ -43,7 +42,7 @@ Prayerify/
 ├── ViewModels/       # MVVM ViewModels for each page
 ├── Pages/           # XAML UI pages
 ├── Data/            # Database layer and interfaces
-├── Services/        # Application services (Dialog, etc.)
+├── Services/        # Application services
 ├── Resources/       # Images, fonts, and styling
 └── Platforms/       # Platform-specific implementations
 ```
@@ -142,33 +141,6 @@ Prayerify/
 - **CommunityToolkit.Mvvm**: MVVM framework
 - **sqlite-net-pcl**: SQLite database access
 - **Humanizer.Core**: Text formatting utilities
-
-## 📦 Building for Release
-
-### Android
-```bash
-dotnet publish -f net8.0-android -c Release
-```
-
-### Windows
-```bash
-dotnet publish -f net8.0-windows10.0.19041.0 -c Release
-```
-
-### iOS
-```bash
-dotnet publish -f net8.0-ios -c Release
-```
-
-## 🤝 Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ## 📄 License
 
