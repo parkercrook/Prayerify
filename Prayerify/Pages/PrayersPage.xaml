@@ -57,42 +57,55 @@
 		</StackLayout>
 		
 		<!-- Prayers Collection -->
-		<CollectionView Grid.Row="1"
-						ItemsSource="{Binding Prayers}"
-						EmptyView="No prayers found. Try adjusting your search or filters."
-						Margin="16">
-		<CollectionView.ItemTemplate>
-			<DataTemplate>
-				<SwipeView>
-					<SwipeView.RightItems>
-						<SwipeItems Mode="Reveal">
-							<SwipeItem Text="Answered"
-									  BackgroundColor="DarkGreen"
-									  Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ToggleAnsweredCommand}"
-									  CommandParameter="{Binding .}" />
-							<SwipeItem Text="Delete"
-									  BackgroundColor="DarkRed"
-									  Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeletePrayerCommand}"
-									  CommandParameter="{Binding .}" />
-                            <SwipeItem Text="Edit"
-								  BackgroundColor="#6D2E46"
-								  Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditPrayerCommand}"
-								  CommandParameter="{Binding .}" />
+        <CollectionView Grid.Row="1"
+                ItemsSource="{Binding Prayers}"
+                Margin="16">
+            <CollectionView.EmptyView>
+                <VerticalStackLayout Padding="20"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center">
+                    <Label Text="No prayers found. Try adjusting your search or filters."
+                   FontSize="16"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" />
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Reveal">
+                                <SwipeItem Text="Answered"
+                                   BackgroundColor="DarkGreen"
+                                   Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ToggleAnsweredCommand}"
+                                   CommandParameter="{Binding .}" />
+                                <SwipeItem Text="Delete"
+                                   BackgroundColor="DarkRed"
+                                   Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeletePrayerCommand}"
+                                   CommandParameter="{Binding .}" />
+                                <SwipeItem Text="Edit"
+                                   BackgroundColor="#6D2E46"
+                                   Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditPrayerCommand}"
+                                   CommandParameter="{Binding .}" />
                             </SwipeItems>
-					</SwipeView.RightItems>
-					<Frame Padding="12" Margin="0,8" CornerRadius="12" HasShadow="False">
-                        <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto,Auto">
-                            <Label Text="{Binding PrayerTitle}" FontAttributes="Bold" FontSize="25"/>
-							<Label Text="{Binding PrayerDescription}" Grid.Row="1" Opacity="0.8" Margin="0,8,0,0" FontSize="20"/>
-                            <Label Text="{Binding CategoryName}" Grid.Row="2" Opacity="0.6" Margin="0,8,0,0" FontSize="14"/>
-                            <Label Text="{Binding CreatedUtc}" Grid.Row="2" Opacity="0.8" Margin="0,8,0,0" TextColor="Grey" HorizontalTextAlignment="End" FontSize="14"/>
-                        </Grid>
-					</Frame>
-				</SwipeView>
-			</DataTemplate>
-		</CollectionView.ItemTemplate>
-		</CollectionView>
-	</Grid>
+                        </SwipeView.RightItems>
+
+                        <Frame Padding="12" Margin="0,8" CornerRadius="12" HasShadow="False">
+                            <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto,Auto">
+                                <Label Text="{Binding PrayerTitle}" FontAttributes="Bold" FontSize="25"/>
+                                <Label Text="{Binding PrayerDescription}" Grid.Row="1" Opacity="0.8" Margin="0,8,0,0" FontSize="20"/>
+                                <Label Text="{Binding CategoryName}" Grid.Row="2" Opacity="0.6" Margin="0,8,0,0" FontSize="14"/>
+                                <Label Text="{Binding CreatedUtc}" Grid.Row="2" Opacity="0.8" Margin="0,8,0,0" TextColor="Grey" HorizontalTextAlignment="End" FontSize="14"/>
+                            </Grid>
+                        </Frame>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
 </ContentPage>
 
 
