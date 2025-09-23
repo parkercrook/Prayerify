@@ -19,29 +19,43 @@
 
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Frame Padding="12" Margin="0,8" CornerRadius="12" HasShadow="False">
-                    <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto">
-                        <Label Text="{Binding PrayerTitle}"
+                <SwipeView>
+                    <SwipeView.RightItems>
+                        <SwipeItems Mode="Reveal">
+                            <SwipeItem Text="Delete"
+                                BackgroundColor="DarkRed"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeletePrayerCommand}"
+                                CommandParameter="{Binding .}" />
+                            <SwipeItem Text="Unanswered"
+                                BackgroundColor="#6D2E46"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ToggleUnansweredCommand}"
+                                CommandParameter="{Binding .}" />
+                        </SwipeItems>
+                    </SwipeView.RightItems>
+                    <Frame Padding="12" Margin="0,8" CornerRadius="12" HasShadow="False">
+                        <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto">
+                            <Label Text="{Binding PrayerTitle}"
                            FontAttributes="Bold"
                            FontSize="25" />
-                        <Label Text="{Binding PrayerDescription}"
+                            <Label Text="{Binding PrayerDescription}"
                            Grid.Row="1"
                            Opacity="0.8"
                            Margin="0,8,0,0"
                            FontSize="20" />
-                        <Label Text="{Binding CategoryName}"
+                            <Label Text="{Binding CategoryName}"
                            Grid.Row="2"
                            Opacity="0.6"
                            Margin="0,8,0,0"
                            FontSize="14" />
-                        <Label Text="{Binding CreatedUtc}"
+                            <Label Text="{Binding CreatedUtc}"
                            Grid.Row="2"
                            Opacity="0.8"
                            Margin="0,8,0,0"
                            TextColor="Grey"
                            HorizontalTextAlignment="End" />
-                    </Grid>
-                </Frame>
+                        </Grid>
+                    </Frame>
+                </SwipeView>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
