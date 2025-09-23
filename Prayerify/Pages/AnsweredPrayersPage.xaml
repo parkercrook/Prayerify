@@ -3,34 +3,63 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 x:Class="Prayerify.Pages.AnsweredPrayersPage"
 			 Title="Answered">
-	<CollectionView ItemsSource="{Binding Prayers}" EmptyView="No answered prayers yet." Margin="16">
-			<CollectionView.ItemTemplate>
-				<DataTemplate>
+
+    <CollectionView ItemsSource="{Binding Prayers}" Margin="16">
+        <CollectionView.EmptyView>
+            <VerticalStackLayout Padding="20"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center">
+                <Label Text="No answered prayers yet."
+                   FontSize="16"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" />
+            </VerticalStackLayout>
+        </CollectionView.EmptyView>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
                 <SwipeView>
                     <SwipeView.RightItems>
                         <SwipeItems Mode="Reveal">
-                            <SwipeItem Text="Unanswered"
-				                  BackgroundColor="{StaticResource Primary}"
-				                  Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ToggleUnansweredCommand}"
-				                  CommandParameter="{Binding .}" />
                             <SwipeItem Text="Delete"
-								  BackgroundColor="DarkRed"
-								  Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeletePrayerCommand}"
-								  CommandParameter="{Binding .}" />
+                                BackgroundColor="DarkRed"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeletePrayerCommand}"
+                                CommandParameter="{Binding .}" />
+                            <SwipeItem Text="Unanswered"
+                                BackgroundColor="#6D2E46"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ToggleUnansweredCommand}"
+                                CommandParameter="{Binding .}" />
                         </SwipeItems>
                     </SwipeView.RightItems>
                     <Frame Padding="12" Margin="0,8" CornerRadius="12" HasShadow="False">
                         <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto">
-                            <Label Text="{Binding PrayerTitle}" FontAttributes="Bold" FontSize="25"/>
-                            <Label Text="{Binding PrayerDescription}" Grid.Row="1" Opacity="0.8" Margin="0,8,0,0" FontSize="20"/>
-                            <Label Text="{Binding CategoryName}" Grid.Row="2" Opacity="0.6" Margin="0,8,0,0" FontSize="14"/>
-                            <Label Text="{Binding CreatedUtc}" Grid.Row="2" Opacity="0.8" Margin="0,8,0,0" TextColor="Grey" HorizontalTextAlignment="End"/>
+                            <Label Text="{Binding PrayerTitle}"
+                           FontAttributes="Bold"
+                           FontSize="25" />
+                            <Label Text="{Binding PrayerDescription}"
+                           Grid.Row="1"
+                           Opacity="0.8"
+                           Margin="0,8,0,0"
+                           FontSize="20" />
+                            <Label Text="{Binding CategoryName}"
+                           Grid.Row="2"
+                           Opacity="0.6"
+                           Margin="0,8,0,0"
+                           FontSize="14" />
+                            <Label Text="{Binding CreatedUtc}"
+                           Grid.Row="2"
+                           Opacity="0.8"
+                           Margin="0,8,0,0"
+                           TextColor="Grey"
+                           HorizontalTextAlignment="End" />
                         </Grid>
                     </Frame>
                 </SwipeView>
             </DataTemplate>
-			</CollectionView.ItemTemplate>
-	</CollectionView>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
 </ContentPage>
 
 

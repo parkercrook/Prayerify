@@ -10,25 +10,39 @@
                 <Button Text="Add" Command="{Binding AddCategoryCommand}" HorizontalOptions="End" VerticalOptions="Center" Padding="16,8" WidthRequest="70"/>
             </HorizontalStackLayout>
         </Frame>
-		<CollectionView ItemsSource="{Binding Categories}" EmptyView="No categories yet.">
-			<CollectionView.ItemTemplate>
-				<DataTemplate>
-					<SwipeView>
-						<SwipeView.RightItems>
-							<SwipeItems>
-                                <SwipeItem Text="Delete" BackgroundColor="#6D2E46"
-										  Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteCategoryCommand}"
-										  CommandParameter="{Binding .}" />
-							</SwipeItems>
-						</SwipeView.RightItems>
-						<Frame Padding="12" Margin="0,8" CornerRadius="12" HasShadow="False" HeightRequest="50">
-							<Label Text="{Binding Name}" />
-						</Frame>
-					</SwipeView>
-				</DataTemplate>
-			</CollectionView.ItemTemplate>
-		</CollectionView>
-	</VerticalStackLayout>
+        <CollectionView ItemsSource="{Binding Categories}" Margin="16">
+            <CollectionView.EmptyView>
+                <VerticalStackLayout Padding="20"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center">
+                    <Label Text="No categories yet."
+                   TextColor="{DynamicResource TextPrimaryColor}"
+                   FontSize="16" />
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                   BackgroundColor="#6D2E46"
+                                   Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteCategoryCommand}"
+                                   CommandParameter="{Binding .}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Frame Padding="12" Margin="0,8" CornerRadius="12" HasShadow="False" HeightRequest="50">
+                            <Label Text="{Binding Name}"
+                           TextColor="{DynamicResource TextPrimaryColor}" />
+                        </Frame>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
 </ContentPage>
 
 
