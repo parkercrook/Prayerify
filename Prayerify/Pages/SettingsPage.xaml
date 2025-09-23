@@ -10,5 +10,19 @@
                 <Switch IsToggled="{Binding DarkModeEnabled}" HorizontalOptions="End"/>
             </HorizontalStackLayout>
         </Frame>
+        
+        <Frame Padding="12" CornerRadius="12" HasShadow="False" BackgroundColor="#FFE6E6" BorderColor="#FF6B6B">
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Clear All Data" FontSize="20" FontAttributes="Bold" TextColor="#D63031"/>
+                <Label Text="This will permanently delete all your prayers and categories. This action cannot be undone." 
+                       FontSize="14" TextColor="#636E72" LineBreakMode="WordWrap"/>
+                <Button Text="Clear All Data" 
+                        Command="{Binding ClearAllDataCommand}"
+                        BackgroundColor="#E17055" 
+                        TextColor="White"
+                        CornerRadius="8"
+                        IsEnabled="{Binding IsNotBusy}"/>
+            </VerticalStackLayout>
+        </Frame>
     </VerticalStackLayout>
 </ContentPage>

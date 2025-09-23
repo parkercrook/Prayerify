@@ -19,6 +19,7 @@ namespace Prayerify.Data
 		Task<List<Category>> GetCategoriesAsync();
 		Task<Category> GetCategoryAsync(int id);
 		Task<int> UpdatePrayerCountAsync();
+		Task ClearAllDataAsync();
 
     }
 
@@ -286,6 +287,29 @@ namespace Prayerify.Data
 		{
 			var activePrayers = await GetPrayersAsync(includeAnswered: false, includeDeleted: false);
 			return activePrayers.Count;
+		}
+
+		public async Task ClearAllDataAsync()
+		{
+			try
+			{
+				// Clear all prayers
+				await _connection.ExecuteAsync("DELETE FROM Prayer");
+				
+				// Clear all categories
+				await _connection.ExecuteAsync("DELETE FROM Category");
+				
+				// Reset the database version to 0 so it will be reinitialized
+				await _connection.ExecuteAsync("PRAGMA user_version = 0");
+				
+				// Clear any app preferences that might contain user data
+				Preferences.Clear();
+			}
+			catch (Exception ex)
+			{
+				System.Diagnostics.Debug.WriteLine($"Failed to clear all data: {ex.Message}");
+				throw;
+			}
 		}
 	}
 }
