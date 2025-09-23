@@ -1,10 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.DependencyInjection;
 using Prayerify.Data;
-using Prayerify.ViewModels;
 using Prayerify.Pages;
-using CommunityToolkit.Mvvm.Messaging;
 using Prayerify.Services;
+using Prayerify.ViewModels;
+using SQLitePCL;
 
 namespace Prayerify
 {
@@ -12,6 +11,25 @@ namespace Prayerify
     {
         public static MauiApp CreateMauiApp()
         {
+            // Ensure SQLite is properly initialized before any database operations
+            try
+            {
+                SQLitePCL.Batteries_V2.Init();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"SQLite initialization failed: {ex.Message}");
+                // Continue anyway - try alternative initialization
+                try
+                {
+                    SQLitePCL.Batteries.Init();
+                }
+                catch (Exception ex2)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Alternative SQLite initialization failed: {ex2.Message}");
+                }
+            }
+
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
@@ -22,13 +40,26 @@ namespace Prayerify
                     fonts.AddFont("Montserrat-Regular.ttf", "MontserratRegular");
                     fonts.AddFont("Montserrat-Semibold.ttf", "MontserratSemibold");
                 });
+       
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
             // Register services, viewmodels, and pages
             var dbPath = Path.Combine(FileSystem.AppDataDirectory, "prayerify.db3");
-            builder.Services.AddSingleton<IPrayerDatabase>(_ => new PrayerDatabase(dbPath));
+            builder.Services.AddSingleton<IPrayerDatabase>(_ => 
+            {
+                try
+                {
+                    return new PrayerDatabase(dbPath);
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Failed to create PrayerDatabase: {ex.Message}");
+                    // Return a null or throw - this will be handled by the service container
+                    throw;
+                }
+            });
             builder.Services.AddSingleton<IGenericService, GenericService>();
 
             builder.Services.AddTransient<PrayersViewModel>();
@@ -48,8 +79,37 @@ namespace Prayerify
 
             var app = builder.Build();
 
-            var db = app.Services.GetRequiredService<IPrayerDatabase>();
-            Task.Run(() => db.InitializeAsync());
+            // Initialize the database using sqlite-net-pcl with lazy initialization
+            Task.Run(async () => 
+            {
+                try
+                {
+                    // Add a longer delay to ensure SQLite is fully initialized
+                    await Task.Delay(1000);
+                    
+                    // Try to initialize the database
+                    var localdb = app.Services.GetRequiredService<IPrayerDatabase>();
+                    await localdb.InitializeAsync();
+                }
+                catch (Exception ex)
+                {
+                    // Log the error for debugging
+                    System.Diagnostics.Debug.WriteLine($"Database initialization error: {ex.Message}");
+                    System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
+                    
+                    // Try again after another delay
+                    try
+                    {
+                        await Task.Delay(2000);
+                        var localdb = app.Services.GetRequiredService<IPrayerDatabase>();
+                        await localdb.InitializeAsync();
+                    }
+                    catch (Exception ex2)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Second database initialization attempt failed: {ex2.Message}");
+                    }
+                }
+            });
 
             return app;
         }

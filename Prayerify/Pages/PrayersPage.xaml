@@ -57,9 +57,13 @@
 		</StackLayout>
 		
 		<!-- Prayers Collection -->
-		<CollectionView Grid.Row="1"
+        <!--<Label Text="No prayers found. Try adjusting your search or filters." 
+               IsVisible="{Binding AnyPrayerCreated}" 
+               Grid.Row="1"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />-->
+        <CollectionView Grid.Row="1"
 						ItemsSource="{Binding Prayers}"
-						EmptyView="No prayers found. Try adjusting your search or filters."
 						Margin="16">
 		<CollectionView.ItemTemplate>
 			<DataTemplate>
