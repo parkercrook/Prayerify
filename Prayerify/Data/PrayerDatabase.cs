@@ -34,6 +34,10 @@ namespace Prayerify.Data
 		{
             await _connection.CreateTableAsync<Prayer>();
 			await _connection.CreateTableAsync<Category>();
+			
+			// Run database migrations
+			var migration = new DatabaseMigration(_connection);
+			await migration.MigrateAsync();
 		}
 
 		public Task<int> UpsertPrayerAsync(Prayer prayer)
