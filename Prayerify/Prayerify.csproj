@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net8.0-android;net8.0-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
@@ -27,7 +27,7 @@
 		<ApplicationId>com.parkercrook.prayerify</ApplicationId>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
@@ -36,19 +36,19 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
-		<AndroidSigningKeyStore></AndroidSigningKeyStore>
+		<AndroidSigningKeyStore>prayerify-1.0.keystore</AndroidSigningKeyStore>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
 	  <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
-	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidKeyStore>True</AndroidKeyStore>
 	  <AndroidSigningStorePass>CH18n3t!2022</AndroidSigningStorePass>
 	  <AndroidSigningKeyAlias>crook</AndroidSigningKeyAlias>
 	  <AndroidSigningKeyPass>CH18n3t!2022</AndroidSigningKeyPass>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
-	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidKeyStore>True</AndroidKeyStore>
 	  <AndroidSigningStorePass>CH18n3t!2022</AndroidSigningStorePass>
 	  <AndroidSigningKeyAlias>crook</AndroidSigningKeyAlias>
 	  <AndroidSigningKeyPass>CH18n3t!2022</AndroidSigningKeyPass>
