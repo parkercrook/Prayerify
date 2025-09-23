@@ -19,7 +19,10 @@ namespace Prayerify.ViewModels
 		[ObservableProperty]
 		private bool _canStartSession = false;
 
-		public SessionSetupViewModel(IPrayerDatabase database)
+		[ObservableProperty]
+		private bool _canIncreaseCount = false;
+
+        public SessionSetupViewModel(IPrayerDatabase database)
 		{
 			_database = database;
 			Title = "Prayer Session";
@@ -51,6 +54,8 @@ namespace Prayerify.ViewModels
 				{
 					Count = TotalPrayerCount;
 				}
+
+				CanIncreaseCount = TotalPrayerCount > 0 ? true : false;
             }
             finally
             {

@@ -6,7 +6,7 @@
 	<VerticalStackLayout Padding="16" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
         <Label Text="Start a prayer session!" FontSize="40" HorizontalOptions="Center"/>
         <Label Text="How many items do you want to pray for?" FontSize="20" HorizontalOptions="Center" />
-		<Stepper x:Name="PrayerCountStepper" Minimum="0" Maximum="{Binding TotalPrayerCount}" Increment="1" Value="{Binding Count}" HorizontalOptions="Center" />
+		<Stepper x:Name="PrayerCountStepper" Minimum="0" Maximum="{Binding TotalPrayerCount}" Increment="1" Value="{Binding Count}" HorizontalOptions="Center" IsEnabled="{Binding CanIncreaseCount}" />
 		<Label Text="{Binding Count}" FontSize="48" HorizontalOptions="Center" FontAttributes="Bold"/>
 		<Button Text="Start" Command="{Binding StartCommand}" HorizontalOptions="Center" FontSize="40" IsEnabled="{Binding CanStartSession}" MinimumWidthRequest="200"/>
 	</VerticalStackLayout>
